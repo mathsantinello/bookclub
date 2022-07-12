@@ -12,7 +12,11 @@ export function CurrentBook({ title, author, description, imgurl, ...rest }: Pro
         <Block>
             <h1>{title}</h1>
             <h2> By {author}</h2>
-            <img src={imgurl}></img>
+            <h3>
+                <div>{description}</div>
+                <img src={imgurl}></img>
+            </h3>
+
         </Block>
     )
 }

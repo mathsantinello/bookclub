@@ -1,6 +1,35 @@
 import styled from 'styled-components';
 
-export const Triangle = styled.div`
+
+
+export const Bookmark = styled.div<{ isOpen: boolean }>`
+    position: absolute;
+    background-color: #AC0608;
+    border-width: 5px;
+    border-style: solid;
+    border-color: transparent #EBA11C #EBA11C  #EBA11C;
+    right:30px;
+    top:0px;
+    width: 200px;
+    height: ${props => props.isOpen ? '800px' : '100px'};
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.5s ease;
+    >button{
+        background-color: transparent;
+        border: none;
+        height: 40px;
+        width: 40px;
+        align-self: flex-end;
+        transition: all 0.5s ease;
+        transform: ${props => props.isOpen ? 'rotate(180deg)' : 'none'};
+        &:hover{
+            cursor: pointer;
+        }
+    }
+`
+/* export const Triangle = styled.div`
     position: absolute;
     right:30px;
     top:10px;
@@ -47,4 +76,4 @@ export const TriangleBorder = styled.div`
             transform: rotate(45deg);
         }
     }
-`
+` */

@@ -13,10 +13,15 @@ export function Read({ isOpen, handleIsOpen, bookInfo, ...rest }: Props) {
         <div>
             <Bookmark isOpen={isOpen}>
                 <div>
-                    {/* {isOpen && bookInfo.filter(book =>
-                    !book.current && <img src={book.image}
-                        alt='https://i0.wp.com/www.otakupt.com/wp-content/uploads/2022/02/TAS-A-VER-O-MEU-PATO-shaman-king.jpg?resize=1024%2C576&ssl=1'>
-                    </img>)} */}
+                    {isOpen && bookInfo.filter(book =>
+                        !book.current).map(item =>
+                            <div>
+                                <img src={item.image}
+                                    alt='https://i0.wp.com/www.otakupt.com/wp-content/uploads/2022/02/TAS-A-VER-O-MEU-PATO-shaman-king.jpg?resize=1024%2C576&ssl=1'>
+                                </img>
+                                <span>{item.title}</span>
+                            </div>
+                        )}
 
                 </div>
 

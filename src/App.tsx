@@ -1,16 +1,22 @@
 import { useState, useEffect } from 'react';
 import { Read } from './components/read';
 import { CurrentBook } from './components/reading';
+import { Spine } from './components/spine';
 import books from './data/books';
+import { Bookcover, Container } from './styles/global';
 
 function App() {
   const [bookInfo, setBookInfo] = useState<any[]>([]);
   const [doneFetch, setDoneFetch] = useState(false);
   const [isReadOpen, setIsReadOpen] = useState(false);
 
-  const handleIsOpen = () => {
-    setIsReadOpen(!isReadOpen);
-  }
+  useEffect(() => {
+    const data = localStorage.getItem("book");
+    if (data) {
+      setBookInfo(JSON.parse(data));
+      setDoneFetch(true);
+    }
+  }, []);
 
   const FetchBookData = async () => {
     let bookInfoTemp: any[] = [];
@@ -27,43 +33,41 @@ function App() {
         authors: json.items[0].volumeInfo.authors[0],
         image: json.items[0].volumeInfo?.imageLinks?.thumbnail || 'https://i0.wp.com/www.otakupt.com/wp-content/uploads/2022/02/TAS-A-VER-O-MEU-PATO-shaman-king.jpg?resize=1024%2C576&ssl=1',
         current: books[i].current,
-      }
-
+      };
       bookInfoTemp.push(bookData);
     }
-    setBookInfo(bookInfoTemp)
-    setDoneFetch(true)
+    localStorage.setItem("book", JSON.stringify(bookInfoTemp));
+    setBookInfo(bookInfoTemp);
+    setDoneFetch(true);
   }
 
   useEffect(() => {
     !doneFetch && FetchBookData();
-    console.log(bookInfo);
   }, [bookInfo]);
 
+  const handleIsOpen = () => {
+    setIsReadOpen(!isReadOpen);
+  }
+
   return (
-    <div>
-      <section>
-
-      </section>
-      <section>
-
+    <Container>
+      <Spine />
+      <Bookcover>
         {doneFetch && (
           <>
-            <Read isOpen={isReadOpen} handleIsOpen={handleIsOpen} bookInfo={bookInfo} />
             <CurrentBook
               title={bookInfo[bookInfo.length - 1].title}
               author={bookInfo[bookInfo.length - 1].authors}
               description={bookInfo[bookInfo.length - 1].description}
               imgurl={bookInfo[bookInfo.length - 1].image}>
             </CurrentBook>
+            <Read isOpen={isReadOpen} handleIsOpen={handleIsOpen} bookInfo={bookInfo} />
           </>
         )
         }
-
-      </section>
-
-    </div>
-  )
+      </Bookcover>
+    </Container>
+  );
 };
 
 export default App;

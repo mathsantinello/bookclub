@@ -1,5 +1,5 @@
 const books = [
-  /* {
+  {
     current: false,
     query: "The+Girl+with+the+Dragon+Tattoo",
   },
@@ -98,7 +98,7 @@ const books = [
   {
     current: false,
     query: "Miracle+in+the+Andes",
-  }, */
+  },
   {
     current: false,
     query: "Jantar+secreto",

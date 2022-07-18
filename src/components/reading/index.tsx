@@ -10,6 +10,7 @@ interface Props {
 export function CurrentBook({ title, author, description, imgurl, ...rest }: Props) {
     return (
         <Block>
+            <h1> Reading Now:</h1>
             <h1>{title}</h1>
             <h2> By {author}</h2>
             <h3>

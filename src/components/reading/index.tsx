@@ -1,5 +1,5 @@
 import React from "react";
-import { Block } from "./styles";
+import { Block, ProgressBar } from "./styles";
 
 interface Props {
     title: string;
@@ -17,7 +17,7 @@ export function CurrentBook({ title, author, description, imgurl, ...rest }: Pro
                 <div>{description}</div>
                 <img src={imgurl}></img>
             </h3>
-
+            <ProgressBar barSize="74"> <div></div></ProgressBar>
         </Block>
     )
 }

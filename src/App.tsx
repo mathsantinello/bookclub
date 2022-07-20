@@ -3,7 +3,7 @@ import { Read } from './components/read';
 import { CurrentBook } from './components/reading';
 import { Spine } from './components/spine';
 import books from './data/books';
-import { Bookcover, Container } from './styles/global';
+import { Bookcover, BookcoverBack, Container } from './styles/global';
 
 function App() {
   const [bookInfo, setBookInfo] = useState<any[]>([]);

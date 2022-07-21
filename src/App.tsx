@@ -3,12 +3,20 @@ import { Read } from './components/read';
 import { CurrentBook } from './components/reading';
 import { Spine } from './components/spine';
 import books from './data/books';
-import { Bookcover, BookcoverBack, Container } from './styles/global';
+import { Bookcover, Container } from './styles/global';
+import { ThemeProvider } from 'styled-components';
+import fantasy from './styles/themes/fantasy';
+import scifi from './styles/themes/scifi';
+
 
 function App() {
   const [bookInfo, setBookInfo] = useState<any[]>([]);
   const [doneFetch, setDoneFetch] = useState(false);
   const [isReadOpen, setIsReadOpen] = useState(false);
+  const [chosenTheme, setChosenTheme] = useState<{ name: string, value: object }>({ name: 'fantasy', value: fantasy });
+  const themeList: any[] = [{ name: 'fantasy', value: fantasy }, { name: 'scifi', value: scifi }];
+
+
 
   useEffect(() => {
     const data = localStorage.getItem("book");
@@ -49,24 +57,30 @@ function App() {
     setIsReadOpen(!isReadOpen);
   }
 
+  const handleChangeTheme = (e: string) => {
+    setChosenTheme(themeList.find(item => item.name === e));
+  }
+
   return (
-    <Container>
-      <Spine />
-      <Bookcover>
-        {doneFetch && (
-          <>
-            <CurrentBook
-              title={bookInfo[bookInfo.length - 1].title}
-              author={bookInfo[bookInfo.length - 1].authors}
-              description={bookInfo[bookInfo.length - 1].description}
-              imgurl={bookInfo[bookInfo.length - 1].image}>
-            </CurrentBook>
-            <Read isOpen={isReadOpen} handleIsOpen={handleIsOpen} bookInfo={bookInfo} />
-          </>
-        )
-        }
-      </Bookcover>
-    </Container>
+    <ThemeProvider theme={chosenTheme.value} >
+      <Container>
+        <Spine handleChangeTheme={handleChangeTheme} />
+        <Bookcover>
+          {doneFetch && (
+            <>
+              <CurrentBook
+                title={bookInfo[bookInfo.length - 1].title}
+                author={bookInfo[bookInfo.length - 1].authors}
+                description={bookInfo[bookInfo.length - 1].description}
+                imgurl={bookInfo[bookInfo.length - 1].image}>
+              </CurrentBook>
+              <Read isOpen={isReadOpen} handleIsOpen={handleIsOpen} bookInfo={bookInfo} />
+            </>
+          )
+          }
+        </Bookcover>
+      </Container>
+    </ThemeProvider>
   );
 };
 

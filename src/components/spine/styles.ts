@@ -4,35 +4,38 @@ import bgspine from '../../styles/images/bgspine.png'
 
 export const Bookspine = styled.section`
     width: 10rem;
-    height: max-content;
-    min-height: 100vh;
+    height: 100%;
+    min-height: calc(100vh + 40px);
     background-image: url(${bgspine});
     background-size: 10rem 10rem;
     display: flex;
     align-items: center;
     flex-direction: column;
     &::after{
+        transition: all 1s ease;
         position: absolute;
         left: 0;
         bottom: 0;
         content: '';
         z-index: -1;
-        background-color: #2B5A4A;
+        background-color: ${props => props.theme.colors.primary};
         width: 10rem;
         height: 100vh;
     }  
 `
 export const SpineBlock = styled.div`
+    transition: all 1s ease;
     margin-top: 5rem;
     height: max-content;
     width: 10rem;
-    background-color: #2B5A4A;
+    background-color: ${props => props.theme.colors.primary};
     display: flex;
     align-items: center;
     justify-content: center;
 `
 
 export const SpineBlockContent = styled.div`
+    transition: all 1s ease;
     height: max-content;
     min-height: 8rem;
     display: flex;
@@ -41,8 +44,8 @@ export const SpineBlockContent = styled.div`
     flex-direction: column;
     gap: 1rem;
     width: 8rem;
-    border: 0.5rem solid #AB8D59;
-    color: #AB8D59;
+    border: 0.5rem solid ${props => props.theme.colors.third};
+    color: ${props => props.theme.colors.third};
     font-weight: 700;
     padding: 1rem;
     >span{

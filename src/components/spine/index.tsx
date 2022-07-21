@@ -5,12 +5,16 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import scifilogo from '../../styles/images/SciFiLogo.png';
 import fantasylogo from '../../styles/images/FantasyLogo.png';
 
-export function Spine() {
+interface Props {
+    handleChangeTheme: (e: string) => void;
+}
+
+export function Spine({ handleChangeTheme, ...rest }: Props) {
     return (
         <Bookspine>
             <SpineBlock>
                 <SpineBlockContent>
-                    <FontAwesomeIcon icon={faUser} className='fa-3x' color="#AB8D59" />
+                    <FontAwesomeIcon icon={faUser} className='fa-3x' />
                     <span>LOGIN</span>
                 </SpineBlockContent>
             </SpineBlock>
@@ -18,8 +22,8 @@ export function Spine() {
             <SpineBlock>
                 <SpineBlockContent>
                     <span>THEMES</span>
-                    <ThemeButton themeName="Fantasy"><img src={fantasylogo}></img></ThemeButton>
-                    <ThemeButton themeName="Science Fiction"><img src={scifilogo}></img></ThemeButton>
+                    <ThemeButton themeName="Fantasy" id="fantasy" onClick={(event) => handleChangeTheme(event.target.id)}><img src={fantasylogo} id='fantasy'></img></ThemeButton>
+                    <ThemeButton themeName="Science Fiction" id="scifi" onClick={(event) => handleChangeTheme(event.target.id)}><img src={scifilogo} id='scifi'></img></ThemeButton>
                 </SpineBlockContent>
             </SpineBlock>
 

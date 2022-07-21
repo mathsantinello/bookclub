@@ -12,6 +12,7 @@ export function Read({ isOpen, handleIsOpen, bookInfo, ...rest }: Props) {
     return (
         <div>
             <Bookmark isOpen={isOpen}>
+                <span> Finished Books</span>
                 <div>
                     {isOpen && bookInfo.filter(book =>
                         !book.current).map(item =>

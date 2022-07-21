@@ -1,9 +1,18 @@
+import bgvintage from '../../styles/images/vintageborder_scifi.png';
+import bgcover from '../../styles/images/bgbookcover_scifi.png';
+
 export default {
     title: 'scifi',
 
     colors: {
-        one: "#005066",
-        two: "#4e7988",
-        three: "#e4eff0"
-    }
+        primary: "#005066",
+        secondary: "#78cce2",
+        third: "#e4eff0",
+        fourth: "#4e7988",
+    },
+
+    images: {
+        vintageborder: bgvintage,
+        bookcover: bgcover,
+    },
 }

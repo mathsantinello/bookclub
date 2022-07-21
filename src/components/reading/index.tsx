@@ -1,5 +1,7 @@
 import React from "react";
-import { Block, ProgressBar } from "./styles";
+import { Block, BookCover, ProgressBar } from "./styles";
+import { ThemeProvider } from 'styled-components';
+import fantasy from '../../styles/themes/fantasy';
 
 interface Props {
     title: string;
@@ -13,11 +15,16 @@ export function CurrentBook({ title, author, description, imgurl, ...rest }: Pro
             <h1> Reading Now:</h1>
             <h1>{title}</h1>
             <h2> By {author}</h2>
-            <h3>
-                <div>{description}</div>
-                <img src={imgurl}></img>
-            </h3>
+
+            <BookCover>
+                <div>
+                    <p>{description}</p>
+                    <img src={imgurl}></img>
+                </div>
+            </BookCover>
             <ProgressBar barSize="74"> <div></div></ProgressBar>
+
         </Block>
+
     )
 }

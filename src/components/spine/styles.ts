@@ -1,72 +1,90 @@
 import styled from 'styled-components';
 import bgspine from '../../styles/images/bgspine.png'
-
+import { bookCoverBorder, mainColor, mediaWidth, spineWidth, spineWidthMedia } from '../../styles/variables';
 
 export const Bookspine = styled.section`
-    width: 10rem;
-    height: 100%;
-    min-height: calc(100vh + 40px);
+    width: ${spineWidth};
+    height: calc(100vh - ${bookCoverBorder} -${bookCoverBorder});
     background-image: url(${bgspine});
-    background-size: 10rem 10rem;
+    background-size: ${spineWidth};
     display: flex;
     align-items: center;
     flex-direction: column;
+    @media(max-width: ${mediaWidth}){
+        width: ${spineWidthMedia};
+        background-size: ${spineWidthMedia};
+    }
     &::after{
-        transition: all 1s ease;
         position: absolute;
         left: 0;
         bottom: 0;
-        content: '';
+        width: ${spineWidth};
+        height: calc(100vh - ${bookCoverBorder} -${bookCoverBorder});
         z-index: -1;
         background-color: ${props => props.theme.colors.primary};
-        width: 10rem;
-        height: 100vh;
-    }  
+        content: '';
+        transition: all 1s ease;
+        @media(max-width: ${mediaWidth}){
+        width: ${spineWidthMedia}
+        }
+    };
 `
 export const SpineBlock = styled.div`
-    transition: all 1s ease;
     margin-top: 5rem;
+    width: ${spineWidth};
     height: max-content;
-    width: 10rem;
     background-color: ${props => props.theme.colors.primary};
     display: flex;
     align-items: center;
     justify-content: center;
+    transition: color 1s ease;
+    @media(max-width: ${mediaWidth}){
+        width: ${spineWidthMedia}
+    }
 `
-
 export const SpineBlockContent = styled.div`
-    transition: all 1s ease;
+    padding: 1rem;
+    width: 80%;
     height: max-content;
     min-height: 8rem;
+    border: 0.5rem solid ${props => props.theme.colors.third};
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
     gap: 1rem;
-    width: 8rem;
-    border: 0.5rem solid ${props => props.theme.colors.third};
     color: ${props => props.theme.colors.third};
     font-weight: 700;
-    padding: 1rem;
+    font-size: 1rem;
+    transition: all 1s ease;
+    @media(max-width: ${mediaWidth}){
+        min-height: 5rem;
+        font-size: 0.75rem;
+        padding: 0.5rem;
+    }
     >span{
         text-align: center;
         >a{
             text-decoration: underline;
-            color: wheat;
-        }
-    }
-  
+            color: ${mainColor};
+        };
+    };
 `
 export const ThemeButton = styled.button<{ themeName: string }>`
     position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: transparent;
-    border: none;
     margin-bottom: 1.5rem;
     width: 3.2rem;
     height: 3.2rem;
+    background: transparent;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    @media(max-width: ${mediaWidth}){
+        width: 2.1rem;
+        height: 2.1rem;
+        margin-bottom: 1.5rem;
+    }
     &:hover{
         cursor: pointer;
         border-radius: 50%;
@@ -76,12 +94,20 @@ export const ThemeButton = styled.button<{ themeName: string }>`
             position: absolute;
             top:3rem;
             content: '${props => props.themeName}';
-            color: wheat;
-            font-size: 16px;
-        }
-    }
+            color: ${mainColor};
+            font-size: 1rem;
+            @media(max-width: ${mediaWidth}){
+                top:2rem;
+                font-size:0.75rem;
+            }
+        };
+    };
     >img{
-        background-color: transparent;
         height: 3rem;
-    }
+        background-color: transparent;
+        @media(max-width: ${mediaWidth}){
+            height: 2rem;
+        }
+    };
+
 `

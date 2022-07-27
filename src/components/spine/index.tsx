@@ -14,7 +14,7 @@ export function Spine({ handleChangeTheme, ...rest }: Props) {
         <Bookspine>
             <SpineBlock>
                 <SpineBlockContent>
-                    <FontAwesomeIcon icon={faUser} className='fa-3x' />
+                    <FontAwesomeIcon icon={faUser}/>
                     <span>LOGIN</span>
                 </SpineBlockContent>
             </SpineBlock>

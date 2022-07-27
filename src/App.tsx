@@ -2,15 +2,16 @@ import { useState, useEffect } from 'react';
 import { Read } from './components/read';
 import { CurrentBook } from './components/reading';
 import { Spine } from './components/spine';
-import books from './data/books';
 import { Bookcover, Container } from './styles/global';
 import { ThemeProvider } from 'styled-components';
+import { Normalize } from 'styled-normalize';
+import books from './data/books';
 import fantasy from './styles/themes/fantasy';
 import scifi from './styles/themes/scifi';
 
 
 function App() {
-  const [bookInfo, setBookInfo] = useState<any[]>([]);
+  const [bookInfo, setBookInfo] = useState<{title:string, authors:string, description: string, image:string, current:boolean}[]>([]);
   const [doneFetch, setDoneFetch] = useState(false);
   const [isReadOpen, setIsReadOpen] = useState(false);
   const [chosenTheme, setChosenTheme] = useState<{ name: string, value: object }>({ name: 'fantasy', value: fantasy });
@@ -43,11 +44,11 @@ function App() {
         current: books[i].current,
       };
       bookInfoTemp.push(bookData);
-    }
+    };
     localStorage.setItem("book", JSON.stringify(bookInfoTemp));
     setBookInfo(bookInfoTemp);
     setDoneFetch(true);
-  }
+  };
 
   useEffect(() => {
     !doneFetch && FetchBookData();
@@ -55,13 +56,15 @@ function App() {
 
   const handleIsOpen = () => {
     setIsReadOpen(!isReadOpen);
-  }
+  };
 
   const handleChangeTheme = (e: string) => {
     setChosenTheme(themeList.find(item => item.name === e));
-  }
+  };
 
   return (
+    <>
+    <Normalize/>
     <ThemeProvider theme={chosenTheme.value} >
       <Container>
         <Spine handleChangeTheme={handleChangeTheme} />
@@ -81,6 +84,7 @@ function App() {
         </Bookcover>
       </Container>
     </ThemeProvider>
+    </>
   );
 };
 

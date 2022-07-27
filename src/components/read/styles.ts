@@ -1,36 +1,36 @@
 import styled from 'styled-components';
-
-
+import { bookMarkWidth, mainColor, mainFont } from '../../styles/variables';
 
 export const Bookmark = styled.div<{ isOpen: boolean, imgtext: string }>`
     position: absolute;
+    right:3rem;
+    top:0rem;
+    width: ${bookMarkWidth};
+    height: ${props => props.isOpen ? '82vh' : '5rem'};
+    max-height: 82vh;
     background-color: #AC0608;
-    border-width: 5px;
+    border-width: 0.5rem;
     border-style: solid;
     border-color: transparent #EBA11C #EBA11C  #EBA11C;
-    right:30px;
-    top:0px;
-    width: 200px;
-    height: ${props => props.isOpen ? '600px' : '100px'};
-    max-height: 600px;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    transition: all 0.5s ease;
-    font-family: 'Jura', sans-serif;
+    transition: height 0.5s ease;
+    font-family: ${mainFont};
     >span{
-        color: wheat;
-        font-size: 1.2rem;
         padding-bottom: 1rem;
-    }
+        color: ${mainColor};
+        font-size: 1.2rem;
+        
+    };
     >div{
+        height: 100%;
+        width:${bookMarkWidth};
         display: ${props => props.isOpen ? 'flex' : 'none'};
         flex-direction: column;
         align-items: center;
         row-gap: 3rem;
-        height: 100%;
-        width:200px;
         overflow-y: scroll;
         >div{
             position: relative;
@@ -39,39 +39,39 @@ export const Bookmark = styled.div<{ isOpen: boolean, imgtext: string }>`
             height: 10rem;
             transform: ${props => props.isOpen ? 'none' : 'none'};
             transition: all 0.2s ease;
-            }
+            };
             >span{
-                display: none;
                 position: absolute;
-                text-align: center;
-                width: 7rem;
                 bottom:50%;
-                right:0px;
-            }
+                right:0rem;
+                width: 7rem;
+                display: none;
+                text-align: center;
+            };
             &:hover{
                 >img{
+                    cursor: pointer;
                     opacity: 0.3;
-                    cursor: pointer; 
                 }
                 >span{
                     display: block;
                     color: #FFFFFF;
-                    text-shadow: #000000 1px;
+                    text-shadow: #000000 0.1rem;
                     font-weight: 600;
-                    font-family: 'Jura', sans-serif;
-                }   
-            }    
-        }    
-    }
+                    font-family: ${mainFont};
+                };  
+            };   
+        };  
+    };
     >button{
+        height: 2.5rem;
+        width: 2.5rem;
         background-color: transparent;
         border: none;
-        height: 40px;
-        width: 40px;
         transition: all 0.5s ease;
         transform: ${props => props.isOpen ? 'rotate(180deg)' : 'none'};
         &:hover{
             cursor: pointer;
-        }
-    }
+        };
+    };
 `

@@ -2,14 +2,23 @@ import styled from 'styled-components';
 import bgspine from '../../styles/images/bgspine.png'
 import { bookCoverBorder, mainColor, mediaWidth, spineWidth, spineWidthMedia } from '../../styles/variables';
 
-export const Bookspine = styled.section`
+export const BookspineStyle = styled.section`
     width: ${spineWidth};
     height: calc(100vh - ${bookCoverBorder} -${bookCoverBorder});
     background-image: url(${bgspine});
     background-size: ${spineWidth};
     display: flex;
     align-items: center;
+    justify-content: center;
     flex-direction: column;
+    font-weight: 700;
+    font-size: 1rem;
+    transition: all 1s ease;
+    >h1{
+        width: 80%;
+        color: wheat;
+        text-align: center;
+    }
     @media(max-width: ${mediaWidth}){
         width: ${spineWidthMedia};
         background-size: ${spineWidthMedia};
@@ -30,7 +39,7 @@ export const Bookspine = styled.section`
     };
 `
 export const SpineBlock = styled.div`
-    margin-top: 5rem;
+    margin-top: 1rem;
     width: ${spineWidth};
     height: max-content;
     background-color: ${props => props.theme.colors.primary};
@@ -54,9 +63,6 @@ export const SpineBlockContent = styled.div`
     flex-direction: column;
     gap: 1rem;
     color: ${props => props.theme.colors.third};
-    font-weight: 700;
-    font-size: 1rem;
-    transition: all 1s ease;
     @media(max-width: ${mediaWidth}){
         min-height: 5rem;
         font-size: 0.75rem;

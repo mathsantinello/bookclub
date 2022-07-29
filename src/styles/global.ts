@@ -10,11 +10,11 @@ export const Container = styled.main`
     overflow: scroll;
 `
 export const Bookcover = styled.section`
-    width: calc( 100vw - ${spineWidth} - 2*${bookCoverBorder});
-    height: calc(100% - 2*(${bookCoverBorder}));
-    border-style: solid;
+    width: calc( 100vw - ${spineWidth});
+    height: 100%;
+    /* border-style: solid;
     border-width: ${bookCoverBorder};
-    border-color: ${props => props.theme.colors.fourth};
+    border-color: ${props => props.theme.colors.fourth}; */
     background-color: ${props => props.theme.colors.primary}; 
     background: url(${bg}) repeat;
     background-size: 10rem 10rem;

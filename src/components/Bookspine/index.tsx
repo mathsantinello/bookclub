@@ -1,5 +1,5 @@
 import React from "react";
-import { Bookspine, SpineBlock, SpineBlockContent, ThemeButton } from "./styles";
+import { BookspineStyle, SpineBlock, SpineBlockContent, ThemeButton } from "./styles";
 import { faUser } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import scifilogo from '../../styles/images/SciFiLogo.png';
@@ -9,9 +9,10 @@ interface Props {
     handleChangeTheme: (e: string) => void;
 }
 
-export function Spine({ handleChangeTheme, ...rest }: Props) {
+export function BookSpine({ handleChangeTheme, ...rest }: Props) {
     return (
-        <Bookspine>
+        <BookspineStyle>
+            <h1> The Rush Club</h1>
             <SpineBlock>
                 <SpineBlockContent>
                     <FontAwesomeIcon icon={faUser}/>
@@ -33,6 +34,6 @@ export function Spine({ handleChangeTheme, ...rest }: Props) {
                     <span>Design inspired by <a href='https://www.vecteezy.com/vector-art/2001695-luxury-ornamental-book-cover-design' target='_blank'>Fotolia Stay </a></span>
                 </SpineBlockContent>
             </SpineBlock>
-        </Bookspine>
+        </BookspineStyle>
     );
 };

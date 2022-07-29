@@ -1,5 +1,5 @@
 import React from "react";
-import { Block, BookCover, ProgressBar } from "./styles";
+import { CoverBlock, BookcoverStyle, CoverBlockContent, ProgressBar } from "./styles";
 
 interface Props {
     title: string;
@@ -8,19 +8,21 @@ interface Props {
     imgurl: string;
 };
 
-export function CurrentBook({ title, author, description, imgurl, ...rest }: Props) {
+export function BookCover({ title, author, description, imgurl, ...rest }: Props) {
     return (
-        <Block>
+        <BookcoverStyle>
+        <CoverBlock>
             <h1> Reading Now:</h1>
             <h1>{title}</h1>
             <h2> By {author}</h2>
-            <BookCover>
+            <CoverBlockContent>
                 <div>
                     <p>{description}</p>
                     <img src={imgurl}></img>
                 </div>
-            </BookCover>
+            </CoverBlockContent>
             <ProgressBar barSize="74"> <div></div></ProgressBar>
-        </Block>
+        </CoverBlock>
+        </BookcoverStyle>
     );
 };

@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { bookMarkWidth, mainColor, mainFont } from '../../styles/variables';
 
-export const Bookmark = styled.div<{ isOpen: boolean, imgtext: string }>`
+export const BookmarkStyle = styled.div<{ isOpen: boolean, imgtext: string }>`
     position: absolute;
     right:3rem;
     top:0rem;
@@ -21,8 +21,7 @@ export const Bookmark = styled.div<{ isOpen: boolean, imgtext: string }>`
     >span{
         padding-bottom: 1rem;
         color: ${mainColor};
-        font-size: 1.2rem;
-        
+        font-size: 1.2rem;    
     };
     >div{
         height: 100%;

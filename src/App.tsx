@@ -1,14 +1,13 @@
 import { useState, useEffect } from 'react';
-import { Read } from './components/read';
-import { CurrentBook } from './components/reading';
-import { Spine } from './components/spine';
-import { Bookcover, Container } from './styles/global';
+import { BookMark } from './components/Bookmark';
+import { BookCover } from './components/Bookcover';
+import { BookSpine } from './components/Bookspine';
+import { Container } from './styles/global';
 import { ThemeProvider } from 'styled-components';
 import { Normalize } from 'styled-normalize';
 import books from './data/books';
 import fantasy from './styles/themes/fantasy';
 import scifi from './styles/themes/scifi';
-
 
 function App() {
   const [bookInfo, setBookInfo] = useState<{title:string, authors:string, description: string, image:string, current:boolean}[]>([]);
@@ -16,8 +15,6 @@ function App() {
   const [isReadOpen, setIsReadOpen] = useState(false);
   const [chosenTheme, setChosenTheme] = useState<{ name: string, value: object }>({ name: 'fantasy', value: fantasy });
   const themeList: any[] = [{ name: 'fantasy', value: fantasy }, { name: 'scifi', value: scifi }];
-
-
 
   useEffect(() => {
     const data = localStorage.getItem("book");
@@ -67,25 +64,23 @@ function App() {
     <Normalize/>
     <ThemeProvider theme={chosenTheme.value} >
       <Container>
-        <Spine handleChangeTheme={handleChangeTheme} />
-        <Bookcover>
+        <BookSpine handleChangeTheme={handleChangeTheme} />
+        
           {doneFetch && (
             <>
-              <CurrentBook
+              <BookCover
                 title={bookInfo[bookInfo.length - 1].title}
                 author={bookInfo[bookInfo.length - 1].authors}
                 description={bookInfo[bookInfo.length - 1].description}
                 imgurl={bookInfo[bookInfo.length - 1].image}>
-              </CurrentBook>
-              <Read isOpen={isReadOpen} handleIsOpen={handleIsOpen} bookInfo={bookInfo} />
+              </BookCover>
+              <BookMark isOpen={isReadOpen} handleIsOpen={handleIsOpen} bookInfo={bookInfo} />
             </>
-          )
-          }
-        </Bookcover>
+          )}
+        
       </Container>
     </ThemeProvider>
     </>
   );
 };
-
 export default App;

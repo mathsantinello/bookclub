@@ -1,4 +1,3 @@
-import React from "react";
 import { BookspineStyle, SpineBlock, SpineBlockContent, ThemeButton } from "./styles";
 import { faUser } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";

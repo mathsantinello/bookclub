@@ -5,7 +5,6 @@ import bg from '../../styles/images/bg.png';
 
 export const BookcoverStyle = styled.section`
     width: calc( 100vw - ${spineWidth});
-    height: 100%;
     /* border-style: solid;
     border-width: ${bookCoverBorder};
     border-color: ${props => props.theme.colors.fourth}; */
@@ -13,33 +12,20 @@ export const BookcoverStyle = styled.section`
     background: url(${bg}) repeat;
     background-size: 10rem 10rem;
     display: flex;
+    flex-wrap: wrap;
     justify-content: center;
     align-items: center;
     transition: color 1s ease;
     @media(max-width: ${mediaWidth}){
         width: calc( 100vw - ${spineWidthMedia});
     }
-    &::after{
-        position: absolute;
-        right: 0;
-        bottom: 0;
-        content: '';
-        width: 100%;
-        height: 100%;
-        z-index: -1;
-        background-color: ${props => props.theme.colors.primary};  
-    }
     @media(max-width: ${mediaWidth}){
         width: calc( 100vw - ${spineWidthMedia});
     }   
 `
 export const CoverBlock = styled.div`
-    width: 50rem;
-    height: calc(100vh - ${bookMarkWidth});
-    background-size: 100% 100%;
-    background-color:transparent;
-    background-image: ${props => `url(${props.theme.images.vintageborder})`};
-    background-repeat: no-repeat;
+    width: 33%;
+    min-width: 30rem;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -55,8 +41,10 @@ export const CoverBlock = styled.div`
         background-image: none;
     }
     >h1{
+        max-width: 32rem;
         font-size: 3rem;
-        margin: 0;
+        margin-top: 6rem;
+        text-align: center;
         @media(max-width:${mediaWidth}){
         font-size: 1.5rem;
     }
@@ -64,6 +52,7 @@ export const CoverBlock = styled.div`
     >h2{
         font-size: 2rem;
         text-decoration: underline;
+        text-align: center;
         @media(max-width:${mediaWidth}){
         font-size: 1rem;
     };
@@ -86,8 +75,7 @@ export const CoverBlockContent = styled.div`
         };
         >div{
         position: relative;
-        background-image: url(${bgscroll});
-        background-size: cover;
+        background-color:  	#F9F6EE;
         height: 80.5%;
         width: 71.75%;
         color: black;
@@ -119,7 +107,24 @@ export const CoverBlockContent = styled.div`
         transform-origin: 0 50%;
         transition: all 0.5s ease;
         }
-    } 
+        }
+        >ul{
+            height: 80.5%;
+            width: 58.75%;
+            background-color: #F9F6EE;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 3rem;
+            >img{
+                width: 3rem;
+                height: 3rem;
+                border: 0.1rem solid black;
+                border-radius: 50%;
+                &:hover{
+                    cursor: pointer;
+                }
+            }
+        } 
 `
 export const ProgressBar = styled.div<{ barSize: string }>`
     width:20rem;

@@ -4,16 +4,15 @@ import { bookCoverBorder, mainColor, mediaWidth, spineWidth, spineWidthMedia } f
 
 export const BookspineStyle = styled.section`
     width: ${spineWidth};
-    height: calc(100vh - ${bookCoverBorder} -${bookCoverBorder});
     background-image: url(${bgspine});
     background-size: ${spineWidth};
     display: flex;
     align-items: center;
-    justify-content: center;
+
     flex-direction: column;
     font-weight: 700;
     font-size: 1rem;
-    transition: all 1s ease;
+    transition: color 1s ease;
     >h1{
         width: 80%;
         color: wheat;
@@ -32,7 +31,6 @@ export const BookspineStyle = styled.section`
         z-index: -1;
         background-color: ${props => props.theme.colors.primary};
         content: '';
-        transition: all 1s ease;
         @media(max-width: ${mediaWidth}){
         width: ${spineWidthMedia}
         }
@@ -46,7 +44,6 @@ export const SpineBlock = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
-    transition: color 1s ease;
     @media(max-width: ${mediaWidth}){
         width: ${spineWidthMedia}
     }

@@ -1,14 +1,13 @@
-import React from "react";
 import { BookmarkStyle } from "./styles";
-import { faAngleDown } from "@fortawesome/free-solid-svg-icons"
+import { faAngleDown } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 interface Props {
     isOpen: boolean;
     handleIsOpen: () => void;
     bookInfo: any[];
-}
-export function BookMark({ isOpen, handleIsOpen, bookInfo, ...rest }: Props) {
+};
+export function BookMark({ isOpen, handleIsOpen, bookInfo,...rest }: Props) {
     return (
     <BookmarkStyle isOpen={isOpen}>
         <span> Finished Books</span>

@@ -8,21 +8,34 @@ import { Normalize } from 'styled-normalize';
 import books from './data/books';
 import fantasy from './styles/themes/fantasy';
 import scifi from './styles/themes/scifi';
+import { Usercard } from './components/Usercard';
+import users from './data/users';
 
 function App() {
   const [bookInfo, setBookInfo] = useState<{title:string, authors:string, description: string, image:string, current:boolean}[]>([]);
   const [doneFetch, setDoneFetch] = useState(false);
   const [isReadOpen, setIsReadOpen] = useState(false);
+  const [isCardOpen, setIsCardOpen] = useState(false);
   const [chosenTheme, setChosenTheme] = useState<{ name: string, value: object }>({ name: 'fantasy', value: fantasy });
+  const [cardData, setCardData] = useState< {name: string, favBook: string, favGenre: string, image: string}|undefined>({name:'', favBook:'', favGenre:'',image: ''});
+
   const themeList: any[] = [{ name: 'fantasy', value: fantasy }, { name: 'scifi', value: scifi }];
 
   useEffect(() => {
     const data = localStorage.getItem("book");
+    const theme = localStorage.getItem("theme");
     if (data) {
       setBookInfo(JSON.parse(data));
       setDoneFetch(true);
     }
+    if(theme){
+      setChosenTheme(JSON.parse(theme));
+    }
   }, []);
+  
+  useEffect(() => {
+    localStorage.setItem("theme", JSON.stringify(chosenTheme))
+  },[chosenTheme]);
 
   const FetchBookData = async () => {
     let bookInfoTemp: any[] = [];
@@ -59,6 +72,18 @@ function App() {
     setChosenTheme(themeList.find(item => item.name === e));
   };
 
+  const handleCardData = (e: string) => {
+    setCardData(users.find(item => item.name === e));
+  };
+
+  const openCard = ()=>{
+    setIsCardOpen(true);
+  }
+
+  const closeCard = ()=>{
+    setIsCardOpen(false);
+  }
+
   return (
     <>
     <Normalize/>
@@ -72,12 +97,17 @@ function App() {
                 title={bookInfo[bookInfo.length - 1].title}
                 author={bookInfo[bookInfo.length - 1].authors}
                 description={bookInfo[bookInfo.length - 1].description}
-                imgurl={bookInfo[bookInfo.length - 1].image}>
+                imgurl={bookInfo[bookInfo.length - 1].image}
+                openCard={openCard}
+                handleCardData={handleCardData}
+                > 
               </BookCover>
               <BookMark isOpen={isReadOpen} handleIsOpen={handleIsOpen} bookInfo={bookInfo} />
             </>
           )}
-        
+          {isCardOpen && (
+            <Usercard closeCard={closeCard} cardData={cardData}/>
+          )}
       </Container>
     </ThemeProvider>
     </>

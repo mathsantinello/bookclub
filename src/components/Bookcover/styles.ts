@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import bgscroll from '../../styles/images/bgscroll.jpg';
-import { bookCoverBorder, bookCoverImageHeigth, bookMarkWidth, mainColor, mainFont, mediaWidth, spineWidth, spineWidthMedia } from '../../styles/variables';
+import { blockContentBgColor, bookCoverBorder, bookCoverImageHeigth, bookMarkWidth, mainColor, mainFont, mediaWidth, spineWidth, spineWidthMedia } from '../../styles/variables';
 import bg from '../../styles/images/bg.png';
 
 export const BookcoverStyle = styled.section`
@@ -24,8 +24,8 @@ export const BookcoverStyle = styled.section`
     }   
 `
 export const CoverBlock = styled.div`
-    width: 33%;
-    min-width: 30rem;
+    width: 30%;
+    min-width: 28rem;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -59,72 +59,101 @@ export const CoverBlock = styled.div`
     };
 `
 export const CoverBlockContent = styled.div`
-        margin-bottom: 2rem;
-        height: ${bookCoverImageHeigth};
-        aspect-ratio: 0.6;
-        background-image: ${props => `url(${props.theme.images.bookcover})`};
-        background-size: 100% 100%;
-        background-repeat: no-repeat;
-        background-position: center;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        transition: color 1s ease;
-        @media(max-width:${mediaWidth}){
-            height: calc( 0.8*${bookCoverImageHeigth});    
-        };
-        >div{
-        position: relative;
-        background-color:  	#F9F6EE;
-        height: 80.5%;
-        width: 71.75%;
-        color: black;
-        font-size: 1.25rem;
-        transform-style: preserve-3d;
-        perspective: 750px;
-        &:hover{
-            >img{
-                transform: rotateY(-75deg);
-            }  
-        }
-        >p{
-            margin-left: 3.2rem;
-            margin-top: 2rem;
-            text-justify: distribute-all-lines;
-            text-align: center;
-            font-size: 1rem;
-            @media(max-width:${mediaWidth}){
-                font-size: 0.75rem;
-            }
-        }
+    margin-bottom: 2rem;
+    height: ${bookCoverImageHeigth};
+    aspect-ratio: 0.6;
+    background-image: ${props => `url(${props.theme.images.bookcover})`};
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: color 1s ease;
+    @media(max-width:${mediaWidth}){
+        height: calc( 0.8*${bookCoverImageHeigth});    
+    };
+    >div{
+    position: relative;
+    background-color:  	#F9F6EE;
+    height: 80.5%;
+    width: 71.75%;
+    color: black;
+    font-size: 1.25rem;
+    transform-style: preserve-3d;
+    perspective: 750px;
+    &:hover{
         >img{
-        position: absolute;
-        bottom:0rem;
-        right: 0rem;
-        height: 100%;
-        width: 100%;
-        background-size: cover;
-        transform-origin: 0 50%;
-        transition: all 0.5s ease;
+            transform: rotateY(-75deg);
+        }  
+    }
+    >p{
+        margin-left: 3.2rem;
+        margin-top: 2rem;
+        text-justify: distribute-all-lines;
+        text-align: center;
+        font-size: 1rem;
+        @media(max-width:${mediaWidth}){
+            font-size: 0.75rem;
         }
-        }
-        >ul{
-            height: 80.5%;
-            width: 58.75%;
-            background-color: #F9F6EE;
+    }
+    >img{
+    position: absolute;
+    bottom:0rem;
+    right: 0rem;
+    height: 100%;
+    width: 100%;
+    background-size: cover;
+    transform-origin: 0 50%;
+    transition: all 0.5s ease;
+    }
+    }
+    >ul{
+        height: 80.5%;
+        width: 58.75%;
+        background-color: ${blockContentBgColor};
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: flex-start;
+        column-gap: 3rem;
+        row-gap: 0.5rem;
+        list-style: none;
+        >li{
+            width: 3.4rem;
             display: flex;
-            flex-wrap: wrap;
-            gap: 3rem;
-            >img{
-                width: 3rem;
-                height: 3rem;
-                border: 0.1rem solid black;
-                border-radius: 50%;
-                &:hover{
-                    cursor: pointer;
+            flex-direction: column;
+            justify-content:center;
+            align-items: center;
+            @media(max-width: ${mediaWidth}){
+                width: 1.7rem;
+                
+            }
+            &:hover{
+                >div{
+                    color:black;
                 }
             }
-        } 
+            >img{
+            margin: 0;
+            width: 3rem;
+            height: 3rem;
+            border: 0.1rem solid black;
+            border-radius: 50%;
+            @media(max-width: ${mediaWidth}){
+                width: 1.5rem;
+                height: 1.5rem;
+            }
+            &:hover{
+                cursor: pointer;
+            }
+            }
+            >div{
+                color: ${blockContentBgColor};
+                font-size: 0.75rem;
+            }      
+        }    
+    } 
 `
 export const ProgressBar = styled.div<{ barSize: string }>`
     width:20rem;

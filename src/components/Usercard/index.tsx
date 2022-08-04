@@ -12,11 +12,11 @@ export function Usercard({closeCard, cardData,...rest}:Props){
     return(
         <UsercardStyle>
             <button onClick={()=>closeCard()}><FontAwesomeIcon icon={faX} size='2x'></FontAwesomeIcon></button>
-            <img src={vitor}></img>
+            <img src={cardData?.image}></img>
             <ul>
-                <li> Name: {cardData.name} </li>
-                <li> Favorite Genre: {cardData.favGenre} </li>
-                <li> Favorite Book: {cardData.favBook} </li>
+                <li> Name: {cardData?.name} </li>
+                <li> Favorite Genre: {cardData?.favGenre} </li>
+                <li> Favorite Book: {cardData?.favBook} </li>
             </ul>
         </UsercardStyle>
     )

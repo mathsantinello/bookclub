@@ -72,8 +72,9 @@ function App() {
     setChosenTheme(themeList.find(item => item.name === e));
   };
 
-  const handleCardData = (e: string) => {
+  const handleCardData = (e:string) => {
     setCardData(users.find(item => item.name === e));
+    console.log(cardData)
   };
 
   const openCard = ()=>{

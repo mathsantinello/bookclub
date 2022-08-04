@@ -22,7 +22,7 @@ export function BookCover({ title, author, description, imgurl,openCard, handleC
                 <div>
                     <p>
                         The Rush Club is a book discussion club made by a group of friends with the desire to improve our reading habit and add another layer of fun to it. 
-                        We stablish weekly goals and reunite to discuss what we've read so far, where everybody can express their opinion. 
+                        We stablish weekly goals and reunite to discuss what we've read so far, so everybody can express their opinion and ideias about the book. 
                     </p>
                 </div>
             </CoverBlockContent>
@@ -45,7 +45,10 @@ export function BookCover({ title, author, description, imgurl,openCard, handleC
             <CoverBlockContent>
                 <ul>
                     {users.map(item => 
-                        <img src={item.image} id={item.name} onClick={(e)=>handleCardData(e.target.id)}></img>
+                        <li>
+                            <img src={item.image} id={item.name} onClick={(e)=>{handleCardData(e.target.id),openCard()}}></img>
+                            <div> {item.name}</div>
+                        </li>     
                     )}
                 </ul>
             </CoverBlockContent>

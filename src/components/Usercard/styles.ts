@@ -1,12 +1,13 @@
 import  styled from 'styled-components';
+import { spineWidth, userCardHeight, userCardWidth } from '../../styles/variables';
 
 export const UsercardStyle = styled.div`
     position: absolute;
-    right: 20%;
-    top: 30%;
+    right: calc(50% - (${userCardWidth})/2 - (${spineWidth})/2);
+    top: calc(50% - (${userCardHeight})/2);
     padding: 1rem;
-    width: 40rem;
-    height: 25rem;
+    width: ${userCardWidth};
+    height: ${userCardHeight};
     border: solid 0.5rem ${props=>props.theme.colors.third};
     display: flex;
     justify-content: center;

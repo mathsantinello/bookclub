@@ -18,5 +18,11 @@ export const mainColor = 'wheat';
 export const bookCoverBorder = '1rem';
 
 //height of the Book Cover image;
-export const bookCoverImageHeigth = '30.5rem'
+export const bookCoverImageHeigth = '30.5rem';
 
+//dimensions of UserCard component;
+export const userCardHeight = '25rem';
+export const userCardWidth = '40rem';
+
+//color of the BookCoverBlockContent background;
+export const blockContentBgColor='#F9F6EE'

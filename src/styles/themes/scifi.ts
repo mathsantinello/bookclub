@@ -8,7 +8,7 @@ export default {
         primary: "#005066",
         secondary: "#78cce2",
         third: "#e4eff0",
-        fourth: "#4e7988",
+        fourth: "#002439",
     },
 
     images: {

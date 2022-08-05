@@ -24,5 +24,8 @@ export const bookCoverImageHeigth = '30.5rem';
 export const userCardHeight = '25rem';
 export const userCardWidth = '40rem';
 
+export const userCardHeightMobile = '12.5rem';
+export const userCardWidthMobile = '20rem';
+
 //color of the BookCoverBlockContent background;
 export const blockContentBgColor='#F9F6EE'

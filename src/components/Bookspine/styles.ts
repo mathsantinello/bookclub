@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import bgspine from '../../styles/images/bgspine.png'
-import { bookCoverBorder, mainColor, mediaWidth, spineWidth, spineWidthMedia } from '../../styles/variables';
+import { bookCoverBorder, mainColor, mainFont, mediaWidth, spineWidth, spineWidthMedia } from '../../styles/variables';
 
 export const BookspineStyle = styled.section`
     width: ${spineWidth};
@@ -65,19 +65,26 @@ export const SpineBlockContent = styled.div`
         font-size: 0.75rem;
         padding: 0.5rem;
     }
-    >span{
-        text-align: center;
-        >a{
-            text-decoration: underline;
-            color: ${mainColor};
-        };
-    };
+    >form{
+        display: flex;
+        flex-direction: column;
+        >input{
+            width: 90%;
+        }
+        >button{
+            margin-top: 1rem;
+            width: 80%;
+            font-family:${mainFont};
+            font-size: 1rem;
+            align-self: center;
+        }
+    }
 `
 export const ThemeButton = styled.button<{ themeName: string }>`
     position: relative;
     margin-bottom: 1.5rem;
-    width: 3.2rem;
-    height: 3.2rem;
+    width: 3rem;
+    height: 3rem;
     background: transparent;
     border: none;
     display: flex;

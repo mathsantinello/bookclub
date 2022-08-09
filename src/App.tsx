@@ -8,6 +8,10 @@ import { Normalize } from 'styled-normalize';
 import books from './data/books';
 import fantasy from './styles/themes/fantasy';
 import scifi from './styles/themes/scifi';
+import romance from './styles/themes/romance';
+import history from './styles/themes/history';
+import mystery from './styles/themes/mystery';
+import horror from './styles/themes/horror';
 import { Usercard } from './components/Usercard';
 import users from './data/users';
 
@@ -19,7 +23,12 @@ function App() {
   const [chosenTheme, setChosenTheme] = useState<{ name: string, value: object }>({ name: 'fantasy', value: fantasy });
   const [cardData, setCardData] = useState< {name: string, favBook: string, favGenre: string, image: string}|undefined>({name:'', favBook:'', favGenre:'',image: ''});
 
-  const themeList: any[] = [{ name: 'fantasy', value: fantasy }, { name: 'scifi', value: scifi }];
+  const themeList: any[] = [{ name: 'fantasy', value: fantasy }, 
+                            { name: 'scifi', value: scifi },
+                            { name: 'romance', value: romance },
+                            { name: 'history', value: history},
+                            { name: 'mystery', value: mystery },
+                            { name: 'horror', value: horror}];
 
   useEffect(() => {
     const data = localStorage.getItem("book");
